@@ -157,6 +157,12 @@ html,body{height:100%;font-family:'Segoe UI',Arial,sans-serif;background:var(--g
 .crs h2{font-size:16px;color:var(--blue);margin-bottom:.8rem;}
 .crs p,.crs li{font-size:14px;line-height:1.75;color:var(--gr3);}
 .crs ul{padding-left:1.2rem;}
+.cr-html{font-size:14px;line-height:1.75;color:var(--gr3);}
+.cr-html b,.cr-html strong{font-weight:700;color:var(--ink);}
+.cr-html h2{font-size:16px;color:var(--blue);margin:.8rem 0 .4rem;}
+.cr-html ul,.cr-html ol{padding-left:1.4rem;margin:.4rem 0;}
+.cr-html li{margin-bottom:.3rem;}
+.cr-html p{margin-bottom:.6rem;}
 
 .udot{width:14px;height:14px;border-radius:50%;background:#4A90E2;border:3px solid #fff;box-shadow:0 0 0 3px rgba(74,144,226,.25);}
 @media(max-width:400px){.hdr{padding:0 .7rem;}.ftab-lbl{font-size:8px;}.fb2{padding:.9rem;}}
@@ -269,9 +275,9 @@ html,body{height:100%;font-family:'Segoe UI',Arial,sans-serif;background:var(--g
     <img class="hdr-logo2" src="assets/images/logo2.png" alt="" onerror="this.style.display='none'">
   </div>
   <div class="crb">
-    <div class="crs"><h2>🏛️ À propos</h2><p id="crTx"></p></div>
-    <div class="crs"><h2>🛠️ Technologies</h2><ul><li>Cartographie : <strong>OpenStreetMap</strong> + Leaflet.js</li><li>Hébergement : <strong>Netlify</strong></li></ul></div>
-    <div class="crs" style="text-align:center;color:var(--gr2);font-size:12px"><p id="crV"></p></div>
+    <div class="crs">
+      <div id="crTx" class="cr-html"></div>
+    </div>
   </div>
 </div>
 
@@ -340,8 +346,8 @@ async function init() {
     // Textes fixes
     document.getElementById('vaT').textContent  = D.sentier.nom;
     document.getElementById('vaS').textContent  = D.sentier.sous_titre;
-    document.getElementById('crTx').textContent = C.credits || 'Parcours patrimonial — Journées Européennes du Patrimoine.';
-    document.getElementById('crV').textContent  = D.sentier.nom + ' · ' + D.sentier.sous_titre;
+    // Texte crédits
+    document.getElementById('crTx').innerHTML = D.sentier.texte_credits || '';
 
     // Texte introduction (depuis texte_accueil)
     const tx = D.sentier.texte_accueil || '';

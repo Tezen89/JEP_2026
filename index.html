@@ -456,7 +456,7 @@ function renderF(l) {
         wrap.innerHTML = `
           <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:200px;gap:1rem;padding:1rem;text-align:center;background:var(--grl);border-radius:10px">
             <div style="font-size:13px;color:var(--gr3)">Aperçu non disponible</div>
-            <a href="${url}" target="_blank" rel="noopener" class="archive-btn">Voir le document ↗</a>
+            <a href="#" onclick="ouvrirExterne('${url}');return false;" class="archive-btn">Voir le document ↗</a>
           </div>`;
       };
     }
@@ -493,6 +493,34 @@ function agrandir(cote) {
   document.getElementById('photoModalImg').src = src;
   document.getElementById('photoModal').classList.add('open');
 }
+
+function ouvrirExterne(url) {
+  window.open(url, '_system') || window.open(url, '_blank');
+}
+
+// Intercepter le bouton retour physique du téléphone
+window.addEventListener('popstate', () => {
+  // Fermer la modal photo si ouverte
+  if (document.getElementById('photoModal').classList.contains('open')) {
+    closePhoto(); history.pushState(null,'',''); return;
+  }
+  // Fermer la modal doc si ouverte
+  if (document.getElementById('docModal').classList.contains('open')) {
+    closeDoc(); history.pushState(null,'',''); return;
+  }
+  // Revenir à la vue précédente dans l'app
+  const vue = document.querySelector('.vue.active');
+  if (vue && vue.id !== 'va') {
+    history.pushState(null,'','');
+    if (vue.id === 'vf') back();
+    else goV('va');
+  } else {
+    history.pushState(null,'',''); // rester sur l'accueil
+  }
+});
+
+// Initialiser l'historique pour pouvoir intercepter le retour
+history.pushState(null,'','');
 
 function openDoc(url, titre) {
   document.getElementById('docModalFrame').src = url;

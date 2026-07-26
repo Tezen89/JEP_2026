@@ -647,6 +647,8 @@ function gps(){
     if(MAP){
       if(!uM)uM=L.marker([la,lo],{icon:L.divIcon({className:'',html:'<div class="udot"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(MAP);
       else uM.setLatLng([la,lo]);
+      // Recentrer la carte sur la position
+      MAP.setView([la,lo], MAP.getZoom(), {animate:true, duration:0.5});
     }
 
     D.lieux.forEach(l=>{

@@ -181,6 +181,36 @@ html,body{height:100%;font-family:'Segoe UI',Arial,sans-serif;background:var(--g
 
 .udot{width:14px;height:14px;border-radius:50%;background:#4A90E2;border:3px solid #fff;box-shadow:0 0 0 3px rgba(74,144,226,.25);}
 
+/* ── MODAL ÉNIGME ── */
+.enigme-modal{display:none;position:fixed;inset:0;z-index:250;
+  background:rgba(26,58,92,.96);align-items:center;justify-content:center;padding:1.5rem;}
+.enigme-modal.open{display:flex;}
+.enigme-inner{background:#fff;border-radius:var(--r);max-width:460px;width:100%;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.enigme-hdr{background:var(--blue);color:#fff;padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;}
+.enigme-hdr-icon{font-size:26px;}
+.enigme-hdr-txt{font-size:14px;font-weight:700;line-height:1.3;}
+.enigme-body{padding:1.4rem 1.2rem;}
+.enigme-q{font-size:16px;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:1.2rem;}
+.enigme-props{display:flex;flex-direction:column;gap:.6rem;}
+.enigme-prop{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;
+  border:1.5px solid #E2E8F0;border-radius:10px;cursor:pointer;
+  font-size:14px;color:var(--ink);background:#fff;font-family:inherit;
+  text-align:left;transition:all .15s;width:100%;}
+.enigme-prop:hover{border-color:var(--blue3);background:var(--blue4);}
+.enigme-prop-lbl{width:28px;height:28px;border-radius:50%;background:var(--blue);
+  color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.enigme-prop.correct{border-color:#2E7D32;background:#E6F4EA;}
+.enigme-prop.correct .enigme-prop-lbl{background:#2E7D32;}
+.enigme-prop.incorrect{border-color:#C62828;background:#FDECEA;}
+.enigme-prop.incorrect .enigme-prop-lbl{background:#C62828;}
+.enigme-msg{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;font-size:14px;line-height:1.6;font-weight:500;}
+.enigme-msg.ok{background:#E6F4EA;color:#1B5E20;}
+.enigme-msg.ko{background:#FDECEA;color:#B71C1C;}
+.enigme-footer{padding:.75rem 1.2rem 1.2rem;display:flex;gap:.6rem;}
+.enigme-btn{flex:1;padding:.75rem;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
+.enigme-btn.rejouer{background:var(--grl);color:var(--blue);}
+.enigme-btn.fermer{background:var(--blue);color:#fff;}
+
 /* ── NOTIFICATION GPS GLOBALE ── */
 .gps-notif{
   position:fixed;top:-120px;left:1rem;right:1rem;z-index:300;
@@ -326,6 +356,7 @@ if(location.protocol==='file:'){
 }
 
 let D=null,C={},MAP=null,mapOk=false,minimaps={},prev='vl',notifTm=null,lastN=null,filtreEtat='tous',filtreImpl='tous';
+let enigmeEnCours=null, lastE=null;
 
 // ── FOOTER ─────────────────────────────────────
 const TABS = [
@@ -641,6 +672,68 @@ function closeDoc() {
   document.getElementById('docModalFrame').src = ''; // stopper le chargement
 }
 
+// ── ÉNIGMES ────────────────────────────────────
+function ouvrirEnigme(id) {
+  const e = (D.enigmes||[]).find(x=>x.id===id);
+  if (!e) return;
+  enigmeEnCours = e;
+  document.getElementById('enigmeHdrTxt').textContent = 'Énigme';
+  document.getElementById('enigmeQ').textContent = e.question;
+  document.getElementById('enigmeMsg').style.display = 'none';
+  document.getElementById('enigmeMsg').className = 'enigme-msg';
+  document.getElementById('enigmeFooter').style.display = 'none';
+
+  const props = [
+    {lbl:'A', txt:e.prop_a},
+    {lbl:'B', txt:e.prop_b},
+    {lbl:'C', txt:e.prop_c},
+  ].filter(p=>p.txt);
+
+  document.getElementById('enigmeProps').innerHTML = props.map(pr=>`
+    <button class="enigme-prop" onclick="enigmeRepondre('${pr.lbl}')">
+      <span class="enigme-prop-lbl">${pr.lbl}</span>
+      <span>${pr.txt}</span>
+    </button>`).join('');
+
+  document.getElementById('enigmeModal').classList.add('open');
+}
+
+function enigmeRepondre(choix) {
+  const e = enigmeEnCours;
+  if (!e) return;
+  const bonne = (e.bonne_reponse||'').toUpperCase().trim();
+  const correct = choix.toUpperCase() === bonne;
+
+  // Colorier les boutons
+  document.querySelectorAll('.enigme-prop').forEach(btn => {
+    const lbl = btn.querySelector('.enigme-prop-lbl').textContent;
+    if (lbl === bonne) btn.classList.add('correct');
+    else if (lbl === choix && !correct) btn.classList.add('incorrect');
+    btn.disabled = true;
+    btn.style.cursor = 'default';
+  });
+
+  // Message
+  const msg = document.getElementById('enigmeMsg');
+  msg.style.display = '';
+  msg.className = 'enigme-msg ' + (correct ? 'ok' : 'ko');
+  msg.textContent = correct
+    ? (e.msg_bonne || '✅ Bonne réponse !')
+    : (e.msg_mauvaise || '❌ Ce n\'est pas la bonne réponse.');
+
+  // Footer
+  document.getElementById('enigmeFooter').style.display = 'flex';
+}
+
+function enigmeRejouer() {
+  if (enigmeEnCours) ouvrirEnigme(enigmeEnCours.id);
+}
+
+function enigmeFermer() {
+  document.getElementById('enigmeModal').classList.remove('open');
+  enigmeEnCours = null;
+}
+
 // ── MINI-CARTE ─────────────────────────────────
 function initMini(l) {
   const c=document.getElementById('fmap');
@@ -704,6 +797,24 @@ function initMap(){
             Voir la fiche →</button></div>`,{maxWidth:220})
         .on('click',()=>MAP.setView([l.gps.lat,l.gps.lng],16,{animate:true}));
     });
+
+    // Marqueurs énigmes
+    (D.enigmes||[]).forEach(e=>{
+      if(!e.gps||!e.gps.lat) return;
+      const couleur = e.couleur || '#1A3A5C';
+      L.marker([e.gps.lat,e.gps.lng],{icon:L.divIcon({className:'',
+        html:`<div style="width:34px;height:34px;border-radius:50%;background:${couleur};border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35)">${e.id}</div>`,
+        iconSize:[34,34],iconAnchor:[17,17]})})
+        .addTo(MAP)
+        .bindPopup(`<div style="font-family:'Segoe UI',sans-serif;min-width:180px">
+          <b style="font-size:14px">Énigme ${e.id}</b><br>
+          <small style="color:#999">${e.question.substring(0,60)}…</small><br><br>
+          <button onclick="ouvrirEnigme('${e.id}')"
+            style="background:${couleur};color:#fff;border:none;padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer;width:100%">
+            Répondre →</button></div>`,{maxWidth:220})
+        .on('click',()=>MAP.setView([e.gps.lat,e.gps.lng],16,{animate:true}));
+    });
+
   });});
 }
 
@@ -728,15 +839,17 @@ function gps(){
       if(!l.gps||!l.gps.lat)return;
       const rayon = l.rayon_declenchement||50;
       const d=hav(la,lo,l.gps.lat,l.gps.lng);
+      if(d<=rayon && l.id!==lastN){lastN=l.id;showN(l,d);}
+      else if(d>rayon*3 && l.id===lastN){lastN=null;}
+    });
 
-      if(d<=rayon && l.id!==lastN){
-        // Entrée dans la zone → déclenchement
-        lastN=l.id;
-        showN(l,d);
-      } else if(d>rayon*3 && l.id===lastN){
-        // Sortie de la zone (3x le rayon) → réinitialiser pour permettre un nouveau déclenchement
-        lastN=null;
-      }
+    // Détection GPS énigmes
+    (D.enigmes||[]).forEach(e=>{
+      if(!e.gps||!e.gps.lat)return;
+      const rayon=e.rayon_declenchement||50;
+      const d=hav(la,lo,e.gps.lat,e.gps.lng);
+      if(d<=rayon && e.id!==lastE){lastE=e.id;ouvrirEnigme(e.id);}
+      else if(d>rayon*3 && e.id===lastE){lastE=null;}
     });
   },()=>document.getElementById('mst').textContent='GPS indisponible',
   {enableHighAccuracy:true,maximumAge:5000,timeout:10000});
@@ -806,6 +919,25 @@ init();
   </div>
   <iframe id="docModalFrame" src="" allowfullscreen></iframe>
 </div>
+<!-- ══ MODAL ÉNIGME ══ -->
+<div class="enigme-modal" id="enigmeModal">
+  <div class="enigme-inner">
+    <div class="enigme-hdr">
+      <div class="enigme-hdr-icon">❓</div>
+      <div class="enigme-hdr-txt" id="enigmeHdrTxt">Énigme</div>
+    </div>
+    <div class="enigme-body">
+      <div class="enigme-q" id="enigmeQ"></div>
+      <div class="enigme-props" id="enigmeProps"></div>
+      <div class="enigme-msg" id="enigmeMsg" style="display:none"></div>
+    </div>
+    <div class="enigme-footer" id="enigmeFooter" style="display:none">
+      <button class="enigme-btn rejouer" onclick="enigmeRejouer()">↺ Rejouer</button>
+      <button class="enigme-btn fermer" onclick="enigmeFermer()">Fermer</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ NOTIFICATION GPS GLOBALE ══ -->
 <div class="gps-notif" id="gpsNotif">
   <div class="gps-notif-inner">

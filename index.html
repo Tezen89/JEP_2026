@@ -182,8 +182,9 @@ html,body{height:100%;font-family:'Segoe UI',Arial,sans-serif;background:var(--g
 .udot{width:14px;height:14px;border-radius:50%;background:#4A90E2;border:3px solid #fff;box-shadow:0 0 0 3px rgba(74,144,226,.25);}
 
 /* ── MODAL ÉNIGME ── */
-.enigme-modal{display:none;position:fixed;inset:0;z-index:250;
-  background:rgba(26,58,92,.96);align-items:center;justify-content:center;padding:1rem;}
+.enigme-modal{display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(26,58,92,.96);align-items:center;justify-content:center;padding:1rem;
+  transform:translateZ(0);}
 .enigme-modal.open{display:flex;}
 .enigme-inner{background:#fff;border-radius:var(--r);max-width:500px;width:100%;
   max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.4);}
@@ -922,6 +923,20 @@ init();
   </div>
   <iframe id="docModalFrame" src="" allowfullscreen></iframe>
 </div>
+<!-- ══ NOTIFICATION GPS GLOBALE ══ -->
+<div class="gps-notif" id="gpsNotif">
+  <div class="gps-notif-inner">
+    <div class="gps-notif-icon">📍</div>
+    <div class="gps-notif-text">
+      <div class="gps-notif-titre" id="gpsNotifTitre"></div>
+      <div class="gps-notif-dist" id="gpsNotifDist"></div>
+    </div>
+    <button class="gps-notif-btn" id="gpsNotifBtn">Voir →</button>
+    <button class="gps-notif-close" onclick="fermerNotifGPS()">✕</button>
+  </div>
+</div>
+
+<nav class="fnav" id="fnav-global"></nav>
 <!-- ══ MODAL ÉNIGME ══ -->
 <div class="enigme-modal" id="enigmeModal">
   <div class="enigme-inner">
@@ -940,20 +955,5 @@ init();
     </div>
   </div>
 </div>
-
-<!-- ══ NOTIFICATION GPS GLOBALE ══ -->
-<div class="gps-notif" id="gpsNotif">
-  <div class="gps-notif-inner">
-    <div class="gps-notif-icon">📍</div>
-    <div class="gps-notif-text">
-      <div class="gps-notif-titre" id="gpsNotifTitre"></div>
-      <div class="gps-notif-dist" id="gpsNotifDist"></div>
-    </div>
-    <button class="gps-notif-btn" id="gpsNotifBtn">Voir →</button>
-    <button class="gps-notif-close" onclick="fermerNotifGPS()">✕</button>
-  </div>
-</div>
-
-<nav class="fnav" id="fnav-global"></nav>
 </body>
 </html>

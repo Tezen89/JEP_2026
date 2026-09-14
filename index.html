@@ -183,31 +183,37 @@ html,body{height:100%;font-family:'Segoe UI',Arial,sans-serif;background:var(--g
 
 /* ── MODAL ÉNIGME ── */
 .enigme-modal{display:none;position:fixed;inset:0;z-index:250;
-  background:rgba(26,58,92,.96);align-items:center;justify-content:center;padding:1.5rem;}
+  background:rgba(26,58,92,.96);align-items:center;justify-content:center;padding:1rem;}
 .enigme-modal.open{display:flex;}
-.enigme-inner{background:#fff;border-radius:var(--r);max-width:460px;width:100%;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4);}
-.enigme-hdr{background:var(--blue);color:#fff;padding:1rem 1.2rem;display:flex;align-items:center;gap:.75rem;}
-.enigme-hdr-icon{font-size:26px;}
+.enigme-inner{background:#fff;border-radius:var(--r);max-width:500px;width:100%;
+  max-height:90vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.4);}
+.enigme-hdr{background:var(--blue);color:#fff;padding:1rem 1.2rem;
+  display:flex;align-items:center;gap:.75rem;position:sticky;top:0;z-index:1;}
+.enigme-hdr-icon{font-size:26px;flex-shrink:0;}
 .enigme-hdr-txt{font-size:14px;font-weight:700;line-height:1.3;}
 .enigme-body{padding:1.4rem 1.2rem;}
-.enigme-q{font-size:16px;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:1.2rem;}
-.enigme-props{display:flex;flex-direction:column;gap:.6rem;}
-.enigme-prop{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;
+.enigme-q{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;
+  margin-bottom:1.4rem;white-space:pre-line;}
+.enigme-props{display:flex;flex-direction:column;gap:.65rem;}
+.enigme-prop{display:flex;align-items:flex-start;gap:.75rem;padding:.9rem 1rem;
   border:1.5px solid #E2E8F0;border-radius:10px;cursor:pointer;
   font-size:14px;color:var(--ink);background:#fff;font-family:inherit;
-  text-align:left;transition:all .15s;width:100%;}
+  text-align:left;transition:all .15s;width:100%;line-height:1.5;}
 .enigme-prop:hover{border-color:var(--blue3);background:var(--blue4);}
 .enigme-prop-lbl{width:28px;height:28px;border-radius:50%;background:var(--blue);
-  color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;margin-top:1px;}
 .enigme-prop.correct{border-color:#2E7D32;background:#E6F4EA;}
 .enigme-prop.correct .enigme-prop-lbl{background:#2E7D32;}
 .enigme-prop.incorrect{border-color:#C62828;background:#FDECEA;}
 .enigme-prop.incorrect .enigme-prop-lbl{background:#C62828;}
-.enigme-msg{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;font-size:14px;line-height:1.6;font-weight:500;}
+.enigme-msg{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;
+  font-size:14px;line-height:1.6;font-weight:500;}
 .enigme-msg.ok{background:#E6F4EA;color:#1B5E20;}
 .enigme-msg.ko{background:#FDECEA;color:#B71C1C;}
-.enigme-footer{padding:.75rem 1.2rem 1.2rem;display:flex;gap:.6rem;}
-.enigme-btn{flex:1;padding:.75rem;border-radius:8px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
+.enigme-footer{padding:.75rem 1.2rem 1.2rem;display:flex;gap:.6rem;position:sticky;bottom:0;background:#fff;border-top:1px solid #E2E8F0;}
+.enigme-btn{flex:1;padding:.75rem;border-radius:8px;border:none;
+  font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;}
 .enigme-btn.rejouer{background:var(--grl);color:var(--blue);}
 .enigme-btn.fermer{background:var(--blue);color:#fff;}
 
@@ -806,13 +812,7 @@ function initMap(){
         html:`<div style="width:34px;height:34px;border-radius:50%;background:${couleur};border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.35)">${e.id}</div>`,
         iconSize:[34,34],iconAnchor:[17,17]})})
         .addTo(MAP)
-        .bindPopup(`<div style="font-family:'Segoe UI',sans-serif;min-width:180px">
-          <b style="font-size:14px">Énigme ${e.id}</b><br>
-          <small style="color:#999">${e.question.substring(0,60)}…</small><br><br>
-          <button onclick="ouvrirEnigme('${e.id}')"
-            style="background:${couleur};color:#fff;border:none;padding:7px 12px;border-radius:6px;font-size:13px;cursor:pointer;width:100%">
-            Répondre →</button></div>`,{maxWidth:220})
-        .on('click',()=>MAP.setView([e.gps.lat,e.gps.lng],16,{animate:true}));
+        .on('click',()=>ouvrirEnigme(e.id));
     });
 
   });});

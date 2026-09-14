@@ -318,5 +318,86 @@
       "photo": ""
     }
   ],
-  "enigmes": []
+  "enigmes": [
+    {
+      "id": "Q1",
+      "question": "LA CROIX BLANCHE - Comment se terminent les extrémités des bras de cette croix ?",
+      "prop_a": "par des cœurs ?",
+      "prop_b": "par des trèfles ?",
+      "prop_c": "par des carreaux ?",
+      "bonne_reponse": "A",
+      "couleur": "#FFC000",
+      "gps": {
+        "lat": 47.7577,
+        "lng": 3.5078
+      },
+      "rayon_declenchement": 25,
+      "msg_bonne": "Bravo",
+      "msg_mauvaise": "Essayez encore"
+    },
+    {
+      "id": "Q2",
+      "question": "LA CROIX DE LA BICHE - Combien de petites volutes en forme de spirale y a-t-il autour du centre de cette croix ?",
+      "prop_a": "4 ?",
+      "prop_b": "6 ?",
+      "prop_c": "8 ?",
+      "bonne_reponse": "C",
+      "couleur": "#FFC000",
+      "gps": {
+        "lat": 47.7577,
+        "lng": 3.5078
+      },
+      "rayon_declenchement": 25,
+      "msg_bonne": "Bravo",
+      "msg_mauvaise": "Essayez encore"
+    },
+    {
+      "id": "Q3",
+      "question": "LA CROIX ST CHARLES BORROMÉE - De quel matériau est fait cette croix ?",
+      "prop_a": "de fer ?",
+      "prop_b": "de pierre ?",
+      "prop_c": "de bois ?",
+      "bonne_reponse": "B",
+      "couleur": "#FFC000",
+      "gps": {
+        "lat": 47.7577,
+        "lng": 3.5078
+      },
+      "rayon_declenchement": 25,
+      "msg_bonne": "Bravo",
+      "msg_mauvaise": "Essayez encore"
+    },
+    {
+      "id": "Q4",
+      "question": "LA CROIX DE BOISLOUP - Quelle est la forme des extrémités des bras de cette croix?",
+      "prop_a": "des piques ?",
+      "prop_b": "des boules ?",
+      "prop_c": "des cœurs ?",
+      "bonne_reponse": "B",
+      "couleur": "#FFC000",
+      "gps": {
+        "lat": 47.7577,
+        "lng": 3.5078
+      },
+      "rayon_declenchement": 25,
+      "msg_bonne": "Bravo",
+      "msg_mauvaise": "Essayez encore"
+    },
+    {
+      "id": "Q5",
+      "question": "LA CROIX DE LA BORDE - Comment se terminent les extrémités des bras de cette croix ? Par des volutes en forme de…",
+      "prop_a": "cœur ?",
+      "prop_b": "feuille ?",
+      "prop_c": "fleur ?",
+      "bonne_reponse": "A",
+      "couleur": "#FFC000",
+      "gps": {
+        "lat": 47.7577,
+        "lng": 3.5078
+      },
+      "rayon_declenchement": 25,
+      "msg_bonne": "Bravo",
+      "msg_mauvaise": "Essayez encore"
+    }
+  ]
 }

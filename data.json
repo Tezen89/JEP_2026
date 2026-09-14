@@ -297,25 +297,6 @@
       "label_apres": "",
       "label_avant": "190?",
       "photo": ""
-    },
-    {
-      "id": "I",
-      "titre": "Château de la Borde",
-      "etat": "",
-      "couleur": "#E719A2",
-      "implantation": "",
-      "gps": {
-        "lat": 47.73567376681961,
-        "lng": 3.493193455229815
-      },
-      "rayon_declenchement": 25,
-      "description": "<div id=\"rendered-md\"><p>Le <strong>ch&acirc;teau de La Borde</strong> a lui compl&egrave;tement disparu, mis &agrave; part son colombier. Mentionn&eacute; d&egrave;s le <strong>13e<br/>\nsi&egrave;cle</strong>, il appartenait au <strong>16e si&egrave;cle</strong> au <strong>capitaine Jehan de La Borde</strong>, chef des Huguenots de Chevannes lors des Guerres de Religion.<br/>\nPuissant et obstin&eacute;, il s&rsquo;empara d&rsquo;Auxerre en septembre <strong>1567</strong> et gouverna la ville pendant presque un an, commettant au passage de nombreuses exactions.</p>\n</div></div>",
-      "source": "",
-      "photo_apres": "",
-      "photo_avant": "assets/images/laborde.jpg",
-      "label_apres": "",
-      "label_avant": "190?",
-      "photo": ""
     }
   ],
   "enigmes": [

@@ -297,6 +297,25 @@
       "label_apres": "",
       "label_avant": "190?",
       "photo": ""
+    },
+    {
+      "id": "15",
+      "titre": "Le Cénotaphe des Moulinards",
+      "etat": "Conservée",
+      "couleur": "#3b88c3",
+      "implantation": "Propriété privée",
+      "gps": {
+        "lat": 47.74490095073103,
+        "lng": 3.4614555713992194
+      },
+      "rayon_declenchement": 50,
+      "description": "<div id=\"rendered-md\"><h1 id=\"le-c&eacute;notaphe-des-moulinards\">Le c&eacute;notaphe des Moulinards</h1>\n<p>Le c&eacute;notaphe des Moulinards constitue un &eacute;l&eacute;ment particulier du patrimoine m&eacute;moriel de la commune.</p>\n<p>Un c&eacute;notaphe est un monument &eacute;lev&eacute; &agrave; la m&eacute;moire d&rsquo;une ou plusieurs personnes dont les d&eacute;pouilles ne reposent pas n&eacute;cessairement &agrave; cet endroit. Contrairement &agrave; une tombe, il a donc avant tout une fonction comm&eacute;morative.</p>\n<p>Dans le cas du c&eacute;notaphe des Moulinards, aucune inscription ou mention particuli&egrave;re ne permet aujourd&rsquo;hui d&rsquo;en pr&eacute;ciser avec certitude l&rsquo;origine, la date d&rsquo;installation ou les personnes auxquelles il &eacute;tait destin&eacute;.</p>\n<p>Le monument se trouve aujourd&rsquo;hui dans une propri&eacute;t&eacute; priv&eacute;e et n&rsquo;est pas visible depuis l&rsquo;espace public. Il ne peut donc pas &ecirc;tre observ&eacute; directement dans le cadre du parcours.</p>\n<p>Sa pr&eacute;sence t&eacute;moigne n&eacute;anmoins de la volont&eacute; de conserver le souvenir d&rsquo;un &eacute;v&eacute;nement, d&rsquo;une famille ou de personnes li&eacute;es au lieu. En l&rsquo;absence de source compl&eacute;mentaire, il est pr&eacute;f&eacute;rable de pr&eacute;server cette part d&rsquo;incertitude plut&ocirc;t que d&rsquo;attribuer au monument une histoire qui ne serait pas document&eacute;e.</p>\n</div></div>",
+      "source": "",
+      "photo_apres": "assets/images/15 cenotaphe.jpg",
+      "photo_avant": "",
+      "label_apres": "Aujourd'hui",
+      "label_avant": "",
+      "photo": ""
     }
   ],
   "enigmes": [

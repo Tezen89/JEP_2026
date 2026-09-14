@@ -333,7 +333,7 @@
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo !",
-      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
+      "msg_mauvaise": "Dommage, la bonne réponse est en vert"
     },
     {
       "id": "Q2",
@@ -349,7 +349,7 @@
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo !",
-      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
+      "msg_mauvaise": "Dommage, la bonne réponse est en vert"
     },
     {
       "id": "Q3",
@@ -365,7 +365,7 @@
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo !",
-      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
+      "msg_mauvaise": "Dommage, la bonne réponse est en vert"
     },
     {
       "id": "Q4",
@@ -381,7 +381,7 @@
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo !",
-      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
+      "msg_mauvaise": "Dommage, la bonne réponse est en vert"
     },
     {
       "id": "Q5",
@@ -397,7 +397,7 @@
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo !",
-      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
+      "msg_mauvaise": "Dommage, la bonne réponse est en vert"
     }
   ]
 }

@@ -328,8 +328,8 @@
       "bonne_reponse": "A",
       "couleur": "#FFC000",
       "gps": {
-        "lat": 47.7577,
-        "lng": 3.5078
+        "lat": 47.76393724536784,
+        "lng": 3.4982972013982434
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo",
@@ -344,8 +344,8 @@
       "bonne_reponse": "C",
       "couleur": "#FFC000",
       "gps": {
-        "lat": 47.7577,
-        "lng": 3.5078
+        "lat": 47.74016041084735,
+        "lng": 3.4851660970933485
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo",
@@ -360,8 +360,8 @@
       "bonne_reponse": "B",
       "couleur": "#FFC000",
       "gps": {
-        "lat": 47.7577,
-        "lng": 3.5078
+        "lat": 47.741161519167335,
+        "lng": 3.487684371031736
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo",
@@ -376,8 +376,8 @@
       "bonne_reponse": "B",
       "couleur": "#FFC000",
       "gps": {
-        "lat": 47.7577,
-        "lng": 3.5078
+        "lat": 47.73662278395168,
+        "lng": 3.4955072043973
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo",
@@ -392,8 +392,8 @@
       "bonne_reponse": "A",
       "couleur": "#FFC000",
       "gps": {
-        "lat": 47.7577,
-        "lng": 3.5078
+        "lat": 47.73945232163319,
+        "lng": 3.4995711470214355
       },
       "rayon_declenchement": 25,
       "msg_bonne": "Bravo",

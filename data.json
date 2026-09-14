@@ -332,8 +332,8 @@
         "lng": 3.4982972013982434
       },
       "rayon_declenchement": 25,
-      "msg_bonne": "Bravo",
-      "msg_mauvaise": "Essayez encore"
+      "msg_bonne": "Bravo !",
+      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
     },
     {
       "id": "Q2",
@@ -348,8 +348,8 @@
         "lng": 3.4851660970933485
       },
       "rayon_declenchement": 25,
-      "msg_bonne": "Bravo",
-      "msg_mauvaise": "Essayez encore"
+      "msg_bonne": "Bravo !",
+      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
     },
     {
       "id": "Q3",
@@ -364,8 +364,8 @@
         "lng": 3.487684371031736
       },
       "rayon_declenchement": 25,
-      "msg_bonne": "Bravo",
-      "msg_mauvaise": "Essayez encore"
+      "msg_bonne": "Bravo !",
+      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
     },
     {
       "id": "Q4",
@@ -380,8 +380,8 @@
         "lng": 3.4955072043973
       },
       "rayon_declenchement": 25,
-      "msg_bonne": "Bravo",
-      "msg_mauvaise": "Essayez encore"
+      "msg_bonne": "Bravo !",
+      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
     },
     {
       "id": "Q5",
@@ -396,8 +396,8 @@
         "lng": 3.4995711470214355
       },
       "rayon_declenchement": 25,
-      "msg_bonne": "Bravo",
-      "msg_mauvaise": "Essayez encore"
+      "msg_bonne": "Bravo !",
+      "msg_mauvaise": "Dommage, la bonne réponse est celle qui est couleur verte"
     }
   ]
 }
